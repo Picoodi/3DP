@@ -12,12 +12,12 @@ public class Vector_Functions {
         return Math.sqrt(Math.pow(vector.x ,2) + Math.pow(vector.y, 2) + Math.pow(vector.z, 2));
     }
 
-    public static Vector vector_between_points(Point point1, Point point2, String name){
-        return new Vector( name,
+    public static Vector vector_between_points(Point point1, Point point2){
+        return new Vector(
                 point2.x - point1.x,
                 point2.y - point1.y,
-                point2.z - point1.z,
-                point1.x, point1.y, point1.z); //Representative is point1
+                point2.z - point1.z
+                );
     }
 
     public static void scalar_multiplication(Vector vector, double number){
@@ -30,36 +30,36 @@ public class Vector_Functions {
         double x = vector.x * -1;
         double y = vector.y * -1;
         double z = vector.z * -1;
-        return new Vector(name,x,y,z,vector.rep_x + vector.x, vector.rep_y + vector.y, vector.rep_z + vector.z);
+        return new Vector(x,y,z);
     }
 
-    public static Vector vector_addition(Vector vector1, Vector vector2, String name){
-        return new Vector(name,
+    public static Vector vector_addition(Vector vector1, Vector vector2){
+        return new Vector(
                 vector1.x + vector2.x,
                 vector1.y + vector2.y,
-                vector1.z + vector2.z,
-                0,0,0); //No representative
+                vector1.z + vector2.z
+                );
     }
 
-    public static Vector vector_subtraction(Vector vector1, Vector vector2, String name){
-        return new Vector(name,
+    public static Vector vector_subtraction(Vector vector1, Vector vector2){
+        return new Vector(
                 vector1.x - vector2.x,
                 vector1.y - vector2.y,
-                vector1.z - vector2.z,
-                0,0,0); //No representative
+                vector1.z - vector2.z
+                );
     }
 
     public static double scalar_product(Vector vector1, Vector vector2) {
         return vector1.x * vector2.x + vector1.y * vector2.y + vector1.z * vector2.z;
     }
 
-    public static Vector cross_product( Vector vector1, Vector vector2, String name){
-        return new Vector(name,
+    public static Vector cross_product( Vector vector1, Vector vector2){
+        return new Vector(
                 vector1.y * vector2.z - vector1.z * vector2.y,
                 vector1.z * vector2.x - vector1.x * vector2.z,
-                vector1.x * vector2.y - vector1.y * vector2.x,
-                0,0,0); //No representative
+                vector1.x * vector2.y - vector1.y * vector2.x);
     }
+
 
     public static boolean linearly_dependent(Vector v1, Vector v2, Vector v3) {
         List<List<Double>> matrix = new ArrayList<>();
