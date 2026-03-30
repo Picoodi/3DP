@@ -28,6 +28,22 @@ public class Plane_Functions {
         return Point_in_Plane(new Point(line.support_vector.x, line.support_vector.y, line.support_vector.z), plane) && Line_parallel_Plane(line, plane);
     }
 
+    public static Point Point_of_intersection_Line_Plane(Line line, Plane plane){
+        if (Line_in_Plane(line, plane) || Line_parallel_Plane(line, plane)){
+            System.out.println("Not a single Point of intersection");
+            return null;
+        }
+        if(plane.normal_vector == null){
+            plane.create_normal_form();
+        }
+
+        double lambda = (plane.constant + (-1*( ( plane.normal_vector.x*line.support_vector.x) + (plane.normal_vector.y*line.support_vector.y) + (plane.normal_vector.z*line.support_vector.z) ) ) )/ ((plane.normal_vector.x*line.direction_vector.x) + (plane.normal_vector.y*line.direction_vector.y) + (plane.normal_vector.z*line.direction_vector.z));
+        return new Point(
+                line.support_vector.x + (line.direction_vector.x * lambda),
+                line.support_vector.y + (line.direction_vector.y * lambda),
+                line.support_vector.z + (line.direction_vector.z * lambda));
+    }
+
 
     public static Line Line_of_intersection(Plane E, Plane F){
         double a = E.normal_vector.x;
